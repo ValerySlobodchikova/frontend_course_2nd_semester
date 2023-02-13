@@ -32,13 +32,13 @@ class ClassComponent extends Component<any, any> {
 
 const FunctionComponent = () => {
     const elem = document.getElementById('funcBlock') as HTMLElement;
-    const [color, setName] = useState('#000000');
+    const [color, setColor] = useState('#000000');
 
     const handleButtonClick = () => {
         if (color === '#ff99ef') {
-            setName('#7d8bfc');
+            setColor('#7d8bfc');
         } else {
-            setName('#ff99ef');
+            setColor('#ff99ef');
         }
     }
     if (color === '#000000') {
