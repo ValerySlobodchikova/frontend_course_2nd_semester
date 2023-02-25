@@ -1,0 +1,47 @@
+@import '../../../defaultStyles/mixins.sass'
+
+.main
+  margin-bottom: 60px
+
+.headPart
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  margin-left: 200px
+  margin-right: 200px
+  height: 128px
+  align-items: center
+
+h1
+  @include interHeader
+
+.filterButtons
+  display: flex
+  gap: 12px
+
+.bodyPart
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  margin-left: 200px
+  margin-right: 200px
+
+.filterBlock
+  display: flex
+  flex-direction: column
+  gap: 23px
+  width: 282px
+
+.filterCheckBox
+  display: flex
+  flex-direction: column
+  padding: 24px
+  gap: 24px
+  border: 1px solid rgba(62, 80, 114, 0.16)
+  border-radius: 16px
+
+.filterByTypeBlock
+  display: flex
+  flex-direction: column
+  gap: 16px
+  @include interRegular16Base80

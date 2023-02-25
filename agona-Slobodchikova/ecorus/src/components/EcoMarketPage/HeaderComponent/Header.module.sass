@@ -1,24 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap')
-
-$c_txt_light_gray: rgba(0, 11, 38, 0.64)
-$c_txt_gray: rgba(0, 11, 38, 0.8)
-
-@mixin interLeftNav
-  font-family: Inter
-  font-style: normal
-  font-weight: 400
-  font-size: 14px
-  line-height: 18px
-  letter-spacing: -0.15px
-  color: $c_txt_light_gray
-
-@mixin interRightNav
-  font-family: Inter
-  font-style: normal
-  font-weight: 400
-  font-size: 14px
-  line-height: 20px
-  color: $c_txt_gray
+@import  '../../../defaultStyles/mixins.sass'
 
 .logo
   width: 94px
@@ -35,7 +15,7 @@ $c_txt_gray: rgba(0, 11, 38, 0.8)
   display: flex
   flex-direction: row
   gap: 48px
-  @include interLeftNav
+  @include interRegularBase64
 .navBar
   display: flex
   flex-direction: row
@@ -46,7 +26,7 @@ $c_txt_gray: rgba(0, 11, 38, 0.8)
   flex-direction: row
   align-items: center
   gap: 4px
-  @include interRightNav
+  @include interRegularBase80
 .locationGroup
   margin-right: 24px
 .balance
