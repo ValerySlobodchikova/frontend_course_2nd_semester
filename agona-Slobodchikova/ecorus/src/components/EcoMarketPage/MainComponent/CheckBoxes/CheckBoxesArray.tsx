@@ -1,15 +1,15 @@
 import React from 'react'
-import {checkBox, CheckBox} from "./CheckBox";
+import {checkBoxInterface, CheckBox} from "./CheckBox";
 import styles from './CheckBox.module.sass';
 
 interface CheckBoxesArray {
-    checkBoxesArray: Array<checkBox>
+    checkBoxesArray: Array<checkBoxInterface>
 }
 
 export const CheckBoxesArray = ({checkBoxesArray}: CheckBoxesArray) => {
     return (
         <div className={styles.arrayCheckBoxes}>
-            {checkBoxesArray.map((checkbox: checkBox) => {
+            {checkBoxesArray.map((checkbox: checkBoxInterface) => {
                 return <CheckBox name={checkbox.name}/>
             })
             }

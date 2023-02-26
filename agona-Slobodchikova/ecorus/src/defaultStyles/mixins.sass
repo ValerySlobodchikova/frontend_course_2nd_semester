@@ -1,53 +1,89 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap')
 
-$c_txt_light_gray: rgba(0, 11, 38, 0.64)
-$c_txt_medium_gray: rgba(0, 11, 38, 0.72)
-$c_txt_gray: rgba(0, 11, 38, 0.8)
+$c_txt_gray64: rgba(0, 11, 38, 0.64)
+$c_txt_gray72: rgba(0, 11, 38, 0.72)
+$c_txt_gray80: rgba(0, 11, 38, 0.8)
 $c_background_surface_8: rgba(62, 80, 114, 0.08)
 $c_dark_blue: rgba(6, 14, 33, 0.88)
 $c_base_green: #07C88E
+$c_txt_gray88: rgba(0, 11, 38, 0.88)
+$c_txt_gray56: rgba(0, 11, 38, 0.56)
+
 @mixin interRegularBase64
-  font-family: Inter
+  font-family: Inter, serif
   font-style: normal
   font-weight: 400
   font-size: 14px
   line-height: 18px
   letter-spacing: -0.15px
-  color: $c_txt_light_gray
+  color: $c_txt_gray64
 
 @mixin interRegularBase72
-  font-family: Inter
+  font-family: Inter, serif
   font-style: normal
   font-weight: 400
   font-size: 14px
   line-height: 20px
-  color: $c_txt_medium_gray
+  color: $c_txt_gray72
 
 
 @mixin interRegularBase80
-  font-family: Inter
+  font-family: Inter, serif
   font-style: normal
   font-weight: 400
   font-size: 14px
   line-height: 20px
-  color: $c_txt_gray
+  color: $c_txt_gray80
 
 
 @mixin interRegular16Base64
-  font-family: Inter
+  font-family: Inter, serif
   font-style: normal
   font-weight: 400
   font-size: 16px
   line-height: 22px
-  color: $c_txt_light_gray
+  color: $c_txt_gray64
 
 @mixin interRegular16Base80
-  font-family: Inter
+  font-family: Inter, serif
   font-style: normal
   font-weight: 600
   font-size: 16px
   line-height: 24px
-  color: $c_txt_gray
+  color: $c_txt_gray80
+
+@mixin interRegular16Base88
+  font-family: Inter, serif
+  font-style: normal
+  font-weight: 600
+  font-size: 16px
+  line-height: 20px
+  color: $c_txt_gray88
+
+@mixin interRegular16Base56
+  font-family: Inter, serif
+  font-style: normal
+  font-weight: 600
+  font-size: 16px
+  line-height: 20px
+  color: $c_txt_gray56
+
+@mixin interRegularBlack
+  font-family: Inter, serif
+  font-style: normal
+  font-weight: 600
+  font-size: 14px
+  line-height: 20px
+  color: black
+
+@mixin interRegularBase56
+  font-family: Inter, serif
+  font-style: normal
+  font-weight: 400
+  font-size: 14px
+  line-height: 18px
+  letter-spacing: -0.15px
+  color: $c_txt_gray56
 
 @mixin interHeader
   font-family: Inter, serif

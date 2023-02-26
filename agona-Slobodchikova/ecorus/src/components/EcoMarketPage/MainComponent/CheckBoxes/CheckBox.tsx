@@ -2,11 +2,11 @@ import React from 'react';
 import styles from './CheckBox.module.sass';
 import checkmark from "../../../../assets/checkmark.svg";
 
-export interface checkBox {
+export interface checkBoxInterface {
     name: string
 }
 
-export const CheckBox = ({name}: checkBox) => {
+export const CheckBox = ({name}: checkBoxInterface) => {
     return (
         <label className={styles.label}>
             <div className={styles.wrapper}>
