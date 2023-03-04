@@ -1,7 +1,7 @@
 import React from 'react';
 import {productInterface, Product} from "./Product";
 import styles from './Product.module.sass';
-import currency from '../../../../assets/currencyIcon.svg'
+import currency from '../../../../../assets/currencyIcon.svg'
 import {LButton} from "../LongButtonComponent/LongButton";
 
 interface ProductArrayInterface {

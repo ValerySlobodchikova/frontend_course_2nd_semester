@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Product.module.sass';
-import currency from '../../../../assets/currencyIcon.svg'
+import currency from '../../../../../assets/currencyIcon.svg'
 
 export interface productInterface {
     name: string

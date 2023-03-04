@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './CheckBox.module.sass';
-import checkmark from "../../../../assets/checkmark.svg";
+import checkmark from "../../../../../assets/checkmark.svg";
 
 export interface checkBoxInterface {
     name: string

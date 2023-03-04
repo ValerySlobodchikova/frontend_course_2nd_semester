@@ -5,11 +5,11 @@ import {LButton} from "./LongButtonComponent/LongButton";
 import {CheckBoxesArray} from './CheckBoxes/CheckBoxesArray'
 import {ProductArray} from './ProductComponent/ProductArray'
 
-import nikeAirMax2021 from '../../../assets/products/nikeAirMax2021.png'
-import nikeAirMax90Premium from '../../../assets/products/nikeAirMax90Premium.png'
-import adidasAlphabounceRC from '../../../assets/products/adidasAlphabounceRC.png'
-import hoodyNikeAirMax2021 from '../../../assets/products/hoodyNikeAirMax2021.png'
-import nikeAirForce1Low from '../../../assets/products/nikeAirForce1Low.png'
+import nikeAirMax2021 from '../../../../assets/products/nikeAirMax2021.png'
+import nikeAirMax90Premium from '../../../../assets/products/nikeAirMax90Premium.png'
+import adidasAlphabounceRC from '../../../../assets/products/adidasAlphabounceRC.png'
+import hoodyNikeAirMax2021 from '../../../../assets/products/hoodyNikeAirMax2021.png'
+import nikeAirForce1Low from '../../../../assets/products/nikeAirForce1Low.png'
 
 const genderArray = [{name: "Мужской"}, {name: "Женский"}]
 const typeOfProductArray = [{name: "Выбрать все"}, {name: "Одежда"}, {name: "Обувь"}, {name: "Аксессуары"}]

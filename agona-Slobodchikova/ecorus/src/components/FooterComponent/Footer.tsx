@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Footer.module.sass';
-import mail from "../../../assets/Mail.svg";
-import call from "../../../assets/Call.svg";
+import mail from "../../assets/Mail.svg";
+import call from "../../assets/Call.svg";
 
 
 export const Footer = () => {
