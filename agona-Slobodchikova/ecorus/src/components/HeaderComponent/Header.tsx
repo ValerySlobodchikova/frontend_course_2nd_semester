@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './Header.module.sass';
 import logo from "../../assets/ecorusLogo.svg";
 import locIcon from "../../assets/locIcon.svg";
@@ -6,8 +6,13 @@ import currencyIcon from "../../assets/currencyIcon.svg";
 import avatar from "../../assets/avatar.svg";
 import {NavLink} from "react-router-dom";
 import cn from 'classnames'
+import {AuthModal} from '../Modals/AuthModal';
+import signIn from "../../assets/signIn.svg"
+
 
 export const Header = () => {
+    const [visible, setVisible] = useState(false)
+
     return (
         <header className={styles.header}>
             <div className={styles.leftNav}>
@@ -39,11 +44,19 @@ export const Header = () => {
                     </a>
                 </div>
                 <div>
+                    <AuthModal visible={visible} onClose={() => setVisible(false)}></AuthModal>
                     <NavLink to="/profile" className={styles.rightNavItem}>
                         <img src={avatar} alt="profile avatar"/>
                         <p>Алексей</p>
                     </NavLink>
+
                 </div>
+                <button onClick={() => setVisible(true)}>
+                    <div className={styles.signInBtn}>
+                        <img className={styles.signInImg} src={signIn} alt=""/>
+                        <span>Войти</span>
+                    </div>
+                </button>
             </nav>
         </header>
     );

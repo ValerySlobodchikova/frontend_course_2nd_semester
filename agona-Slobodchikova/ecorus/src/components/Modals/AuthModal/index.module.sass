@@ -1,0 +1,68 @@
+@import '../../../defaultStyles/mixins'
+
+.overlay
+  position: fixed
+  left: 0
+  right: 0
+  top: 0
+  bottom: 0
+  background-color: $c_modal_background
+  display: flex
+  justify-content: center
+  align-items: center
+
+  z-index: 1000
+
+.modal
+  background-color: white
+  padding: 48px 48px 23px
+  width: 480px
+  height: 507px
+  border-radius: 24px
+
+.topBlock
+  display: flex
+  justify-content: space-between
+
+.crossBtn
+  width: 32px
+  height: 32px
+  background-image: url("../../../assets/cross.svg")
+
+.header
+  @include interHeader28-32
+
+.form
+  display: flex
+  flex-direction: column
+  gap: 24px
+  margin-top: 48px
+  margin-bottom: 32px
+
+.input
+  width: 384px
+  height: 60px
+  border: 1px solid rgba(0, 11, 38, 0.16)
+  border-radius: 8px
+  padding-left: 16px
+  padding-top: 20px
+  padding-bottom: 20px
+
+  @include inter14-20-40
+
+.input::placeholder
+  @include inter14-20-40
+
+.signIn
+  width: 384px
+  height: 56px
+
+.textBtn
+  @include interGreenButton
+
+.bottomBlock
+  margin-top: 16px
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  margin-bottom: 32px

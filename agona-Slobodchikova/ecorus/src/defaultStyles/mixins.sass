@@ -9,6 +9,9 @@ $c_base_green: #07C88E
 $c_txt_gray88: rgba(0, 11, 38, 0.88)
 $c_txt_gray56: rgba(0, 11, 38, 0.56)
 $c_txt_gray100: #000B26
+$c_modal_background: rgba(53, 53, 53, 0.6)
+$c_txt_gray40: rgba(0, 11, 38, 0.4)
+
 
 @mixin interRegularBase64
   font-family: Inter, serif
@@ -93,3 +96,27 @@ $c_txt_gray100: #000B26
   font-size: 40px
   line-height: 48px
   color: black
+
+@mixin interHeader28-32
+  font-family: Inter, serif
+  font-style: normal
+  font-weight: 600
+  font-size: 28px
+  line-height: 32px
+  color: $c_txt_gray88
+
+@mixin inter14-20-40
+  font-family: Inter, serif
+  font-style: normal
+  font-weight: 400
+  font-size: 14px
+  line-height: 20px
+  color: $c_txt_gray40
+
+@mixin interGreenButton
+  font-family: Inter, serif
+  font-style: normal
+  font-weight: 400
+  font-size: 16px
+  line-height: 20px
+  color: $c_base_green
