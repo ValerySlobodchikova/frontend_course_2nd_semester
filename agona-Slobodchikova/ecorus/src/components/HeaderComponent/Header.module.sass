@@ -43,13 +43,20 @@
   font-weight: 600
   display: flex
   flex-direction: column
+  position: relative
 
 .activeLink::after
+  position: absolute
+  width: 100%
+  top: 46px
+  bottom: 0
+  left: 0
+  right: 0
   content: ""
   height: 3px
-  align-self: stretch
   background: $c_base_green
   border-radius: 5px 5px 0 0
+
 
 .signInBtn
   display: flex
