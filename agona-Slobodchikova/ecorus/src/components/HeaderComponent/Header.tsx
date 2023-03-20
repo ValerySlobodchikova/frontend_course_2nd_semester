@@ -1,13 +1,8 @@
 import React, {useState} from 'react';
 import styles from './Header.module.sass';
-import logo from "../../assets/ecorusLogo.svg";
-import locIcon from "../../assets/locIcon.svg";
-import currencyIcon from "../../assets/currencyIcon.svg";
-import avatar from "../../assets/avatar.svg";
 import {NavLink} from "react-router-dom";
 import cn from 'classnames'
 import {AuthModal} from '../Modals/AuthModal';
-import signIn from "../../assets/signIn.svg"
 
 
 export const Header = () => {
@@ -16,7 +11,7 @@ export const Header = () => {
     return (
         <header className={styles.header}>
             <div className={styles.leftNav}>
-                <img className={styles.logo} src={logo} alt="logo of ecorus"/>
+                <img className={styles.logo} src="/assets/ecorusLogo.svg" alt="logo of ecorus"/>
                 <nav className={styles.navBar}>
                     <NavLink to="/"
                              className={({isActive}) => cn(styles.link, isActive && styles.activeLink)}>Главная</NavLink>
@@ -33,27 +28,27 @@ export const Header = () => {
             <nav className={styles.navBar}>
                 <div className={styles.locationGroup}>
                     <a className={styles.rightNavItem} href="">
-                        <img src={locIcon} alt="icon"/>
+                        <img src={"/assets/locIcon.svg"} alt="icon"/>
                         <p>Казань</p>
                     </a>
                 </div>
                 <div>
                     <a className={styles.rightNavItem} href="">
-                        <img src={currencyIcon} alt="icon of currency"/>
+                        <img src="/assets/currencyIcon.svg" alt="icon of currency"/>
                         <p className={styles.balance}>1000</p>
                     </a>
                 </div>
                 <div>
                     <AuthModal visible={visible} onClose={() => setVisible(false)}></AuthModal>
                     <NavLink to="/profile" className={styles.rightNavItem}>
-                        <img src={avatar} alt="profile avatar"/>
+                        <img src="/assets/avatar.svg" alt="profile avatar"/>
                         <p>Алексей</p>
                     </NavLink>
 
                 </div>
                 <button onClick={() => setVisible(true)}>
                     <div className={styles.signInBtn}>
-                        <img className={styles.signInImg} src={signIn} alt=""/>
+                        <img className={styles.signInImg} src="/assets/signIn.svg" alt=""/>
                         <span>Войти</span>
                     </div>
                 </button>

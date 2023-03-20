@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './CheckBox.module.sass';
-import checkmark from "../../../../../assets/checkmark.svg";
 
 export interface checkBoxInterface {
     name: string
@@ -12,7 +11,7 @@ export const CheckBox = ({name}: checkBoxInterface) => {
             <div className={styles.wrapper}>
                 <input type="checkbox" className={styles.checkbox}/>
                 <div className={styles.checkmark}>
-                    <img className={styles.checkmarkImg} src={checkmark} alt="checkmark"/>
+                    <img className={styles.checkmarkImg} src="/assets/checkmark.svg" alt="checkmark"/>
                 </div>
                 <span>{name}</span>
             </div>

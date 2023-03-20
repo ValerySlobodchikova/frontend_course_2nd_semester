@@ -1,13 +1,13 @@
 import React from 'react';
 
-import {Main} from "./MainComponent/Main";
+import {MainComponent} from "./MainComponent";
 
 
 export const EcoMarketPage = () => {
     return (
         <div>
 
-            <Main/>
+            <MainComponent/>
 
         </div>
     )

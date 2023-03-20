@@ -15,7 +15,7 @@ export const LButton = styled.button<LButtonProps>`
   padding: 12px 24px;
   font-family: 'Inter', serif;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
 `;

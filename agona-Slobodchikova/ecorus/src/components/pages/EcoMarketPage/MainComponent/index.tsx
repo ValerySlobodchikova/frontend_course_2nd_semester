@@ -1,28 +1,23 @@
 import React from 'react';
-import styles from './Main.module.sass';
+import styles from './index.module.sass';
 import {FilterButton} from "./FilterButtonComponent/FilterButton";
 import {LButton} from "./LongButtonComponent/LongButton";
 import {CheckBoxesArray} from './CheckBoxes/CheckBoxesArray'
 import {ProductArray} from './ProductComponent/ProductArray'
 
-import nikeAirMax2021 from '../../../../assets/products/nikeAirMax2021.png'
-import nikeAirMax90Premium from '../../../../assets/products/nikeAirMax90Premium.png'
-import adidasAlphabounceRC from '../../../../assets/products/adidasAlphabounceRC.png'
-import hoodyNikeAirMax2021 from '../../../../assets/products/hoodyNikeAirMax2021.png'
-import nikeAirForce1Low from '../../../../assets/products/nikeAirForce1Low.png'
 
 const genderArray = [{name: "Мужской"}, {name: "Женский"}]
 const typeOfProductArray = [{name: "Выбрать все"}, {name: "Одежда"}, {name: "Обувь"}, {name: "Аксессуары"}]
 const brandArray = [{name: "Выбрать все"}, {name: "H&M"}, {name: "P&B"}, {name: "Adidas"}, {name: "Nike"}, {name: "Reebok"}]
 
 const productArray = [
-    {name: 'Nike Air Max 2021', cost: 1000, type: 'Мужская обувь', brand: 'NIKE', img: nikeAirMax2021},
-    {name: 'Nike Air Max 90 Premium', cost: 750, type: 'Мужская обувь', brand: 'NIKE', img: nikeAirMax90Premium},
-    {name: 'Adidas Alphabounce RC', cost: 1200, type: 'Мужская обувь', brand: 'Adidas', img: adidasAlphabounceRC},
-    {name: 'Nike Air Max 2021', cost: 1000, type: 'Мужская обувь', brand: 'H&M', img: hoodyNikeAirMax2021},
-    {name: 'Nike Air Force 1 Low', cost: 2100, type: 'Мужская обувь', brand: 'NIKE', img: nikeAirForce1Low}
+    {name: 'Nike Air Max 2021', cost: 1000, type: 'Мужская обувь', brand: 'NIKE', img: '/assets/products/nikeAirMax2021.png'},
+    {name: 'Nike Air Max 90 Premium', cost: 750, type: 'Мужская обувь', brand: 'NIKE', img: '/assets/products/nikeAirMax90Premium.png'},
+    {name: 'Adidas Alphabounce RC', cost: 1200, type: 'Мужская обувь', brand: 'Adidas', img: '/assets/products/adidasAlphabounceRC.png'},
+    {name: 'Nike Air Max 2021', cost: 1000, type: 'Мужская обувь', brand: 'H&M', img: '/assets/products/hoodyNikeAirMax2021.png'},
+    {name: 'Nike Air Force 1 Low', cost: 2100, type: 'Мужская обувь', brand: 'NIKE', img: '/assets/products/nikeAirForce1Low.png'}
 ]
-export const Main = () => {
+export const MainComponent = () => {
     return (
         <main className={styles.main}>
             <div className={styles.headPart}>

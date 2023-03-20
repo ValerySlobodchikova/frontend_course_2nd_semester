@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Product.module.sass';
-import currency from '../../../../../assets/currencyIcon.svg'
+
 
 export interface productInterface {
     name: string
@@ -22,7 +22,7 @@ export const Product = (props: productInterface) => {
                 <p className={styles.productType}>{props.type}</p>
             </div>
             <div className={styles.productCost}>
-                <img src={currency} alt="currency"/>
+                <img src="/assets/currencyIcon.svg" alt="currency"/>
                 <p>{props.cost}</p>
             </div>
         </div>
