@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
-import styles from './index.module.sass';
-import {LButton} from "../../EcoMarketPage/MainComponent/LongButtonComponent/LongButton";
+import styles from './Card.module.sass';
+import {LButton} from "../EcoMarketPage/MainComponent/LongButtonComponent/LongButton";
 import {NavLink} from "react-router-dom";
 
-export interface subPageInterface {
+export interface CardInterface {
     header: string
     text: string
     backgroundImg: string
     buttonLink: string
 }
 
-export const SubPage = (props: subPageInterface) => {
+export const Card = (props: CardInterface) => {
     return (
 
             <div className={styles.subPageContainer} >
