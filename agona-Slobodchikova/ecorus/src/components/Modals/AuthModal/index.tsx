@@ -1,8 +1,13 @@
 import React, {useRef} from 'react';
-import styles from './index.module.sass'
 import {useModalClose} from "../../../hooks/useModalClose";
 import {Portal} from "../../Portal";
-import {LButton} from '../../pages/EcoMarketPage/MainComponent/LongButtonComponent/LongButton';
+import {AuthBaseModal} from "./AuthBaseModal";
+import {RootState} from "../../../store";
+import {useSelector} from "react-redux"
+import {ActiveModal} from "../../../store/authModalSlice";
+import {RegisterModal} from './RegisterModal';
+import {RegisterInputCodeModal} from "./RegisterInputCodeModal";
+import {AuthPartnersModal} from "./AuthPartnersModal";
 
 interface Props {
     visible: boolean
@@ -14,28 +19,16 @@ export const AuthModal = ({visible, onClose}: Props) => {
     const refCross = useRef<HTMLDivElement>(null)
     useModalClose(ref, () => onClose())
     useModalClose(refCross, () => onClose())
+
+    const activeModal = useSelector((state: RootState) => state.authModal.activeModal)
     return (
         <>
             {visible &&
                 <Portal>
-                    <div className={styles.overlay} ref={ref}>
-                        <div className={styles.modal}>
-                            <div className={styles.topBlock}>
-                                <span className={styles.header}>Вход</span>
-                                <div className={styles.crossBtn} ref={refCross}></div>
-                            </div>
-                            <div className={styles.form}>
-                                <input className={styles.input} type="text" placeholder="Телефон"/>
-                                <input className={styles.input} type="text" placeholder="Пароль"/>
-                            </div>
-                            <LButton className={styles.signIn} colorTheme="green">Войти</LButton>
-                            <div className={styles.bottomBlock}>
-                                <button className={styles.textBtn}>Войти с помощью смс</button>
-                                <button className={styles.textBtn}>Регистрация</button>
-                            </div>
-                            <LButton className={styles.signIn} colorTheme="gray">Вход для партнеров</LButton>
-                        </div>
-                    </div>
+                    {activeModal === ActiveModal.AuthBase && (<AuthBaseModal refOverlay={ref} refCross={refCross}/>)}
+                    {activeModal === ActiveModal.Register && (<RegisterModal refOverlay={ref} refCross={refCross}/>)}
+                    {activeModal === ActiveModal.RegisterInputCode && (<RegisterInputCodeModal refOverlay={ref} refCross={refCross}/>)}
+                    {activeModal === ActiveModal.AuthPartners && (<AuthPartnersModal refOverlay={ref} refCross={refCross}/>)}
                 </Portal>}
 
         </>

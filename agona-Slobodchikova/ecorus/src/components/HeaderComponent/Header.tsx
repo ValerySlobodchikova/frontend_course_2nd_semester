@@ -3,10 +3,13 @@ import styles from './Header.module.sass';
 import {NavLink} from "react-router-dom";
 import cn from 'classnames'
 import {AuthModal} from '../Modals/AuthModal';
+import {useDispatch} from "react-redux";
+import {goToAuthBase} from "../../store/authModalSlice";
 
 
 export const Header = () => {
     const [visible, setVisible] = useState(false)
+    const dispatch = useDispatch()
 
     return (
         <header className={styles.header}>
@@ -46,7 +49,7 @@ export const Header = () => {
                     </NavLink>
 
                 </div>
-                <button onClick={() => setVisible(true)}>
+                <button onClick={() => {setVisible(true); dispatch(goToAuthBase())}}>
                     <div className={styles.signInBtn}>
                         <img className={styles.signInImg} src="/assets/signIn.svg" alt=""/>
                         <span>Войти</span>
