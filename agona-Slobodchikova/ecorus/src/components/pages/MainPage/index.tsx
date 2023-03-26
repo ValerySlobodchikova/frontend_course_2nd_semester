@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card} from "./Card";
 import styles from './index.module.sass';
-import {Carousel} from "./СarouselComponent";
+import {Carousel} from "./CarouselComponent";
 
 
 export const MainPage = () => {
