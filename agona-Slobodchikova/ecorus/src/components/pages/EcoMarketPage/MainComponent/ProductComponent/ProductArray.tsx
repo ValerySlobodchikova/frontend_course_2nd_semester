@@ -24,6 +24,7 @@ export const ProductArray = ({productArray}: ProductArrayInterface) => {
 
             {productArray.map((product: productInterface) => {
                 return <Product
+                    key={product.img}
                     name={product.name}
                     cost={product.cost}
                     brand={product.brand}

@@ -10,7 +10,7 @@ export const CheckBoxesArray = ({checkBoxesArray}: CheckBoxesArray) => {
     return (
         <div className={styles.arrayCheckBoxes}>
             {checkBoxesArray.map((checkbox: checkBoxInterface) => {
-                return <CheckBox name={checkbox.name}/>
+                return <CheckBox name={checkbox.name} key={checkbox.name}/>
             })
             }
         </div>
