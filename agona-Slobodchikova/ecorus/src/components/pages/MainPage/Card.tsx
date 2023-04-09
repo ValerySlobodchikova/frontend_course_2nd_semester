@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styles from './Card.module.sass';
-import {LButton} from "../EcoMarketPage/MainComponent/LongButtonComponent/LongButton";
 import {NavLink} from "react-router-dom";
+import {Icon} from "../../ui/Icon";
 
 export interface CardInterface {
     header: string
@@ -18,10 +18,10 @@ export const Card = (props: CardInterface) => {
                     <p className={styles.header}>{props.header}</p>
                     <p className={styles.text}>{props.text}</p>
                     <NavLink to={props.buttonLink} className={styles.button}>
-                        <img src={'/assets/buttonArrow.svg'} alt=""/>
+                        <Icon icon="buttonArrow"/>
                     </NavLink>
                 </div>
-                <img className={styles.bgImg} src={props.backgroundImg} alt="image on banner"/>
+                <img className={styles.bgImg} src={props.backgroundImg} alt="banner"/>
 
             </div>
     )

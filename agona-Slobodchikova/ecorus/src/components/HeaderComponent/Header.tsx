@@ -2,9 +2,10 @@ import React, {useState} from 'react';
 import styles from './Header.module.sass';
 import {NavLink} from "react-router-dom";
 import cn from 'classnames'
-import {AuthModal} from '../Modals/AuthModal';
+import {Modal} from '../Modals/Modal';
 import {useDispatch} from "react-redux";
 import {goToAuthBase} from "../../store/authModalSlice";
+import {Icon} from "../ui/Icon";
 
 
 export const Header = () => {
@@ -31,7 +32,7 @@ export const Header = () => {
             <nav className={styles.navBar}>
                 <div className={styles.locationGroup}>
                     <a className={styles.rightNavItem} href="">
-                        <img src={"/assets/locIcon.svg"} alt="icon"/>
+                        <Icon icon="locIcon"/>
                         <p>Казань</p>
                     </a>
                 </div>
@@ -42,16 +43,19 @@ export const Header = () => {
                     </a>
                 </div>
                 <div>
-                    <AuthModal visible={visible} onClose={() => setVisible(false)}></AuthModal>
+                    <Modal visible={visible} onClose={() => setVisible(false)}></Modal>
                     <NavLink to="/profile" className={styles.rightNavItem}>
                         <img src="/assets/avatar.svg" alt="profile avatar"/>
                         <p>Алексей</p>
                     </NavLink>
 
                 </div>
-                <button onClick={() => {setVisible(true); dispatch(goToAuthBase())}}>
+                <button onClick={() => {
+                    setVisible(true);
+                    dispatch(goToAuthBase())
+                }}>
                     <div className={styles.signInBtn}>
-                        <img className={styles.signInImg} src="/assets/signIn.svg" alt=""/>
+                        <Icon icon="signIn"/>
                         <span>Войти</span>
                     </div>
                 </button>

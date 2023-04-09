@@ -8,12 +8,12 @@ export enum ActiveModal {
     AuthPartners
 }
 
-export type AuthModalState = {
+export type ModalState = {
     activeModal: ActiveModal
     addition?: string | null
 }
 
-const initialState: AuthModalState = {
+const initialState: ModalState = {
     activeModal: ActiveModal.Null
 }
 

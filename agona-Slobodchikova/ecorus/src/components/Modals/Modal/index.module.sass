@@ -41,16 +41,22 @@
   height: 448px
   border-radius: 24px
 
+.modalContainer
+  position: relative
+
 .topBlock
+  position: absolute
+  left: 48px
+  top: 48px
   display: flex
   justify-content: space-between
+  width: 384px
 
 .crossBtn
   width: 32px
   height: 32px
   cursor: pointer
-  background-image: url("../../../../public/assets/cross.svg")
-
+  color: $c_txt_gray72
 .header
   @include interHeader28-32
 
@@ -58,7 +64,7 @@
   display: flex
   flex-direction: column
   gap: 24px
-  margin-top: 48px
+  margin-top: 80px
   margin-bottom: 32px
 
 .formCode
