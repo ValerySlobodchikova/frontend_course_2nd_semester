@@ -10,6 +10,7 @@ import {RegisterInputCodeModal} from "./RegisterInputCodeModal";
 import {AuthPartnersModal} from "./AuthPartnersModal";
 import styles from "./index.module.sass";
 import {Icon} from "../../ui/Icon";
+import {AuthWithSmsModal} from "./AuthWithSmsModal";
 
 interface Props {
     visible: boolean
@@ -20,6 +21,7 @@ export const ActiveModalTitle = {
     [ActiveModal.Null]: "",
     [ActiveModal.AuthBase]: "Вход",
     [ActiveModal.Register]: "Регистрация",
+    [ActiveModal.AuthWithSms]: "Войти с помощью смс",
     [ActiveModal.RegisterInputCode]: "Ввести код",
     [ActiveModal.AuthPartners]: "Вход"
 } as const
@@ -45,6 +47,7 @@ export const Modal = ({visible, onClose}: Props) => {
                             <div>
                                 {activeModal === ActiveModal.AuthBase && (<AuthBaseModal/>)}
                                 {activeModal === ActiveModal.Register && (<RegisterModal/>)}
+                                {activeModal === ActiveModal.AuthWithSms && (<AuthWithSmsModal/>)}
                                 {activeModal === ActiveModal.RegisterInputCode && (<RegisterInputCodeModal/>)}
                                 {activeModal === ActiveModal.AuthPartners && (<AuthPartnersModal/>)}
                             </div>

@@ -1,22 +1,97 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import styles from '../index.module.sass'
 import {LButton} from '../../../pages/EcoMarketPage/MainComponent/LongButtonComponent/LongButton';
-import {goToAuthBase, goToAuthPartners, goToRegisterInputCode} from "../../../../store/authModalSlice";
+import {goToAuthBase, goToAuthPartners} from "../../../../store/authModalSlice";
 import {useDispatch} from "react-redux";
+import {Formik} from "formik";
+import {RegisterBody, RegisterResponse} from "../../../../models/profile.model";
+import {useRegistrationMutation} from "../../../../store/auth";
+
 
 export const RegisterModal = () => {
     const dispatch = useDispatch()
-    const [inputText, setInputText] = useState('');
+
+    const [register, {data, isLoading, isSuccess}] = useRegistrationMutation();
+
+    useEffect(() => {
+        if (data && isSuccess) {
+            dispatch(goToAuthBase())
+        }
+        console.log(data)
+    }, [data, isSuccess]);
+
+    const handleRegister = (formData: RegisterBody) => {
+        register(formData);
+    };
+
     return (
 
-        <div className={styles.smallModal}>
-            <div className={styles.form}>
-                <input onChange={(e) => {
-                    setInputText(e.target.value);
-                }} className={styles.input} type="text" placeholder="Телефон" id="phone"/>
-            </div>
-            <LButton onClick={() => dispatch(goToRegisterInputCode(inputText))} className={styles.signIn}
-                     colorTheme="green">Получить код</LButton>
+        <div className={styles.registrationModal}>
+            <Formik
+                <RegisterBody>
+                initialValues={{
+                    email: '',
+                    phone_number: '',
+                    password: '',
+                    balance: '',
+                }}
+                onSubmit={handleRegister}
+            >
+                {({
+                      values,
+                      handleChange,
+                      handleBlur,
+                      handleSubmit,
+                  }) => (
+                    <form onSubmit={handleSubmit} className={styles.form}>
+                        <label className={styles.input}>
+                            <input
+                                placeholder="Email"
+                                type="text"
+                                name='email'
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.email}
+                            />
+                        </label>
+                        <label className={styles.input}>
+                            <input
+                                placeholder="Номер телефона"
+                                type="text"
+                                name='phone_number'
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.phone_number}
+                            />
+                        </label>
+                        <label className={styles.input}>
+                            <input
+                                placeholder="Пароль"
+                                type="password"
+                                name='password'
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.password}
+                            />
+                        </label>
+                        <label className={styles.input}>
+                            <input
+                                placeholder="Баланс"
+                                type="text"
+                                name='balance'
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.balance}
+                            />
+                        </label>
+                        <LButton disabled={isLoading} type='submit' className={styles.signIn}
+                                 colorTheme="green">Зарегистрироваться</LButton>
+
+                    </form>
+                )}
+            </Formik>
+
+
             <div className={styles.bottomBlock}>
                 <button onClick={() => dispatch(goToAuthBase())} className={styles.textBtn}>Я уже
                     зарегистировался(-ась)

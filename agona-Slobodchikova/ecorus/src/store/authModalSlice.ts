@@ -4,6 +4,7 @@ export enum ActiveModal {
     Null,
     AuthBase,
     Register,
+    AuthWithSms,
     RegisterInputCode,
     AuthPartners
 }
@@ -27,6 +28,9 @@ export const authModalSlice = createSlice({
         goToRegister: (state) => {
             state.activeModal = ActiveModal.Register
         },
+        goToAuthWithSms: (state) => {
+            state.activeModal = ActiveModal.AuthWithSms
+        },
         goToRegisterInputCode: (state, action: PayloadAction<string>) => {
             state.activeModal = ActiveModal.RegisterInputCode
             state.addition = action.payload
@@ -37,4 +41,4 @@ export const authModalSlice = createSlice({
     }
 })
 
-export const {goToAuthBase, goToRegister, goToRegisterInputCode, goToAuthPartners} = authModalSlice.actions;
+export const {goToAuthBase, goToRegister, goToRegisterInputCode, goToAuthPartners, goToAuthWithSms} = authModalSlice.actions;

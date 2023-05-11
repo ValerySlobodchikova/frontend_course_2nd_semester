@@ -1,16 +1,42 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './Header.module.sass';
 import {NavLink} from "react-router-dom";
 import cn from 'classnames'
 import {Modal} from '../Modals/Modal';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {goToAuthBase} from "../../store/authModalSlice";
 import {Icon} from "../ui/Icon";
+import {RootState} from "../../store";
+import {useGetProfileQuery} from "../../store/auth";
+import {setBalance, setEmail} from "../../store/profileInfo";
 
 
 export const Header = () => {
     const [visible, setVisible] = useState(false)
     const dispatch = useDispatch()
+
+    const profileInfo = {
+        balance: useSelector((state: RootState) => state.profileInfo.balance),
+        email: useSelector((state: RootState) => state.profileInfo.email)
+    }
+
+    const token = localStorage.getItem('token')
+
+    const {data} = useGetProfileQuery(null, {
+        skip: !token
+    })
+    useEffect(() => {
+        if (data) {
+            setVisible(false)
+        }
+    })
+
+    function setProfileInfo(balance: number | undefined, email: string | undefined) {
+        dispatch(setBalance(balance))
+        dispatch(setEmail(email))
+    }
+
+    useEffect(() => setProfileInfo(data?.balance, data?.email))
 
     return (
         <header className={styles.header}>
@@ -36,29 +62,35 @@ export const Header = () => {
                         <p>Казань</p>
                     </a>
                 </div>
-                <div>
-                    <a className={styles.rightNavItem} href="">
-                        <img src="/assets/currencyIcon.svg" alt="icon of currency"/>
-                        <p className={styles.balance}>1000</p>
-                    </a>
-                </div>
-                <div>
-                    <Modal visible={visible} onClose={() => setVisible(false)}></Modal>
-                    <NavLink to="/profile" className={styles.rightNavItem}>
-                        <img src="/assets/avatar.svg" alt="profile avatar"/>
-                        <p>Алексей</p>
-                    </NavLink>
+                {!(profileInfo.email === '' || profileInfo.email === undefined || false) &&
+                    <div className={styles.profileInfo}>
+                        <div>
+                            <a className={styles.rightNavItem} href="">
+                                <img src="/assets/currencyIcon.svg" alt="icon of currency"/>
+                                <p className={styles.balance}>{profileInfo.balance}</p>
+                            </a>
+                        </div>
 
-                </div>
-                <button onClick={() => {
-                    setVisible(true);
-                    dispatch(goToAuthBase())
-                }}>
-                    <div className={styles.signInBtn}>
-                        <Icon icon="signIn"/>
-                        <span>Войти</span>
-                    </div>
-                </button>
+                        <div>
+
+                            <NavLink to="/profile" className={styles.rightNavItem}>
+                                <img src="/assets/avatar.svg" alt="profile avatar"/>
+                                <p>{profileInfo.email}</p>
+                            </NavLink>
+
+                        </div>
+                    </div>}
+                <Modal visible={visible} onClose={() => setVisible(false)}></Modal>
+                {!(profileInfo.email) &&
+                    <button onClick={() => {
+                        setVisible(true);
+                        dispatch(goToAuthBase())
+                    }}>
+                        <div className={styles.signInBtn}>
+                            <Icon icon="signIn"/>
+                            <span>Войти</span>
+                        </div>
+                    </button>}
             </nav>
         </header>
     );
