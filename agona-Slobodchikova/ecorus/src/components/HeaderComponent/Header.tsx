@@ -24,10 +24,10 @@ export const Header = () => {
     }
 
     const token = localStorage.getItem('token')
-
     const {data} = useGetProfileQuery(null, {
         skip: !token
     })
+
     useEffect(() => {
         if (data) {
             setVisible(false)
@@ -39,7 +39,7 @@ export const Header = () => {
         dispatch(setEmail(email))
     }
 
-    useEffect(() => setProfileInfo(data?.balance, data?.email), [])
+    useEffect(() => setProfileInfo(data?.balance, data?.email), [data])
 
     return (
         <header className={styles.header}>

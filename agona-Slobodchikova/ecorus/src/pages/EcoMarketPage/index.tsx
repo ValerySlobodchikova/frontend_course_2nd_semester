@@ -21,7 +21,7 @@ export const EcoMarketPage = () => {
     return (
         <main className={styles.main}>
             <div className={styles.headPart}>
-                <h1>ЭкоМаркет</h1>
+                <h1 className={styles.pageHeader}>ЭкоМаркет</h1>
                 <div className={styles.filterButtons}>
                     <FilterButton text={"По популярности"}/>
                     <FilterButton text={"По цене"}/>

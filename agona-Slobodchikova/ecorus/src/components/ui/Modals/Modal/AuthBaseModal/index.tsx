@@ -3,10 +3,16 @@ import styles from '../index.module.sass'
 import {LButton, Theme} from '../../../LongButtonComponent';
 import {goToAuthPartners, goToAuthWithSms, goToRegister} from "../../../../../store/authModalSlice";
 import {useDispatch} from "react-redux";
-import {Formik} from "formik";
+import {Field, Formik} from "formik";
 import {AuthenticationRequest} from "../../../../../models/generated";
 import {useAuthorizationMutation, useLazyGetProfileQuery} from "../../../../../store/auth";
 import {setBalance, setEmail} from "../../../../../store/profileInfo";
+import * as yup from 'yup'
+
+const validationSchema = yup.object({
+    login: yup.string().required(),
+    password: yup.string().required()
+})
 
 export const AuthBaseModal = () => {
     const dispatch = useDispatch()
@@ -18,6 +24,20 @@ export const AuthBaseModal = () => {
         dispatch(setBalance(balance))
         dispatch(setEmail(email))
     }
+
+    // const handleLogin = (formData: AuthenticationRequest) => {
+    //     login(formData)
+    //         .then(res => {
+    //             if ('data' in res) {
+    //                 console.log(data)
+    //                 let token = data?.token as string
+    //                 localStorage.setItem('token', token)
+    //             }
+    //         })
+    //         .then(() => getProfile(null).then(prom => setProfileInfo(prom?.data?.balance, prom?.data?.email))
+    //
+    //         );
+    // };
 
     useEffect(() => {
         if (isSuccess) {
@@ -33,6 +53,7 @@ export const AuthBaseModal = () => {
     const handleLogin = (formData: AuthenticationRequest) => {
         login(formData);
     };
+
     return (
         <div className={styles.modal}>
             <Formik
@@ -41,6 +62,7 @@ export const AuthBaseModal = () => {
                     login: '',
                     password: ''
                 }}
+                validationSchema={validationSchema}
                 onSubmit={handleLogin}
             >
                 {({
@@ -48,10 +70,12 @@ export const AuthBaseModal = () => {
                       handleChange,
                       handleBlur,
                       handleSubmit,
+                      errors
                   }) => (
                     <form onSubmit={handleSubmit} className={styles.form}>
                         <label className={styles.input}>
-                            <input
+                            <Field
+                                id="login"
                                 placeholder="Логин"
                                 type="text"
                                 name='login'
@@ -59,10 +83,12 @@ export const AuthBaseModal = () => {
                                 onBlur={handleBlur}
                                 value={values.login}
                             />
-                        </label>
 
+                        </label>
+                        {errors.login && <span className={styles.error}>{errors.login}</span>}
                         <label className={styles.input}>
-                            <input
+                            <Field
+                                id="password"
                                 placeholder="Пароль"
                                 type="password"
                                 name='password'
@@ -71,7 +97,8 @@ export const AuthBaseModal = () => {
                                 value={values.password}
                             />
                         </label>
-                        {isError &&
+                        {errors.password && <span className={styles.error}>{errors.password}</span>}
+                        {isError && !errors.login && !errors.password &&
                             <span className={styles.error}>Неверное имя пользователя или пароль</span>}
                         <LButton disabled={isLoading} type='submit' width={384} height={56}
                                  theme={Theme.GREEN}>Войти</LButton>
