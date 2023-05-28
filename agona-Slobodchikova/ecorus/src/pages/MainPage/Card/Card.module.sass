@@ -1,0 +1,38 @@
+@import '../../../styles/mixins'
+
+.subPageContainer
+  border: 1px solid $c_border_gray
+  border-radius: 16px
+  height: 300px
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  width: 49%
+
+
+
+.leftBlock
+  margin-top: 40px
+  margin-left: 40px
+  display: flex
+  flex-direction: column
+  max-width: 256px
+  min-width: 229px
+.header
+  @include interSemiBoldHeader32
+.text
+  @include interRegular16Base80
+  margin-top: 14px
+.bgImg
+  border-radius: 16px
+  overflow: hidden
+.button
+  width: 48px
+  height: 48px
+  margin-top: 46px
+  background: $c_background_surface_8
+  border-radius: 8px
+  display: flex
+  align-items: center
+  justify-content: center
+  color: $c_txt_gray72

@@ -1,0 +1,80 @@
+@import '../../../styles/mixins'
+
+.productCard
+  display: flex
+  flex-direction: column
+  gap: 16px
+
+.brandTag
+  position: absolute
+  margin-top: 24px
+  margin-left: 24px
+  padding: 6px 10px
+  background: white
+  box-shadow: 0 4px 24px $c_shadow_gray
+  border-radius: 10px
+  @include interRegularBase72
+
+.textInformation
+  display: flex
+  flex-direction: column
+  gap: 5px
+
+.productName
+  @include interSemiBold16Base88
+
+.productType
+  @include interSemiBold16Base56
+
+.productCost
+  display: flex
+  flex-direction: row
+  gap: 8px
+  align-items: center
+  @include interSemiBoldBlack
+
+.arrayProduct
+  display: flex
+  flex-direction: row
+  gap: 24px
+  flex-wrap: wrap
+  justify-content: flex-end
+
+.balanceCard
+  width: 275px
+  height: 374px
+  border: 1px solid $c_border_gray
+  box-shadow: 0 12px 32px $c_light_shadow, 0 4px 24px $c_border_gray
+  border-radius: 16px
+  padding: 24px
+  display: flex
+  flex-direction: column
+
+
+.textBalanceCard
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  gap: 8px
+  margin-top: 129.5px
+  margin-bottom: 89.5px
+
+.balanceInf
+  display: flex
+  flex-direction: row
+  align-items: center
+  gap: 4px
+  @include interRegularBase64
+  color: black
+
+.balance
+  @include interSemiBoldBlack
+
+.saleMessage
+  text-align: center
+  @include interRegularBase56
+
+.currency
+  width: 16px
+  height: 16px

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import styles from './Header.module.sass';
 import {NavLink} from "react-router-dom";
 import cn from 'classnames'
-import {Modal} from '../Modals/Modal';
+import {Modal} from '../ui/Modals/Modal';
 import {useDispatch, useSelector} from "react-redux";
 import {goToAuthBase} from "../../store/authModalSlice";
 import {Icon} from "../ui/Icon";
@@ -14,7 +14,10 @@ import {setBalance, setEmail} from "../../store/profileInfo";
 export const Header = () => {
     const [visible, setVisible] = useState(false)
     const dispatch = useDispatch()
-
+    const singInButtonHandler = () => {
+        setVisible(true);
+        dispatch(goToAuthBase())
+    }
     const profileInfo = {
         balance: useSelector((state: RootState) => state.profileInfo.balance),
         email: useSelector((state: RootState) => state.profileInfo.email)
@@ -29,14 +32,14 @@ export const Header = () => {
         if (data) {
             setVisible(false)
         }
-    })
+    }, [])
 
     function setProfileInfo(balance: number | undefined, email: string | undefined) {
         dispatch(setBalance(balance))
         dispatch(setEmail(email))
     }
 
-    useEffect(() => setProfileInfo(data?.balance, data?.email))
+    useEffect(() => setProfileInfo(data?.balance, data?.email), [])
 
     return (
         <header className={styles.header}>
@@ -57,7 +60,7 @@ export const Header = () => {
             </div>
             <nav className={styles.navBar}>
                 <div className={styles.locationGroup}>
-                    <a className={styles.rightNavItem} href="">
+                    <a className={styles.rightNavItem}>
                         <Icon icon="locIcon"/>
                         <p>Казань</p>
                     </a>
@@ -65,7 +68,7 @@ export const Header = () => {
                 {!(profileInfo.email === '' || profileInfo.email === undefined || false) &&
                     <div className={styles.profileInfo}>
                         <div>
-                            <a className={styles.rightNavItem} href="">
+                            <a className={styles.rightNavItem}>
                                 <img src="/assets/currencyIcon.svg" alt="icon of currency"/>
                                 <p className={styles.balance}>{profileInfo.balance}</p>
                             </a>
@@ -82,10 +85,7 @@ export const Header = () => {
                     </div>}
                 <Modal visible={visible} onClose={() => setVisible(false)}></Modal>
                 {!(profileInfo.email) &&
-                    <button onClick={() => {
-                        setVisible(true);
-                        dispatch(goToAuthBase())
-                    }}>
+                    <button onClick={singInButtonHandler}>
                         <div className={styles.signInBtn}>
                             <Icon icon="signIn"/>
                             <span>Войти</span>
