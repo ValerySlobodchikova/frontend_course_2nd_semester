@@ -8,35 +8,42 @@ import {goToAuthBase} from "../../store/authModalSlice";
 import {Icon} from "../ui/Icon";
 import {RootState} from "../../store";
 import {useGetProfileQuery} from "../../store/auth";
-import {setBalance, setEmail} from "../../store/profileInfo";
+import {getToken, setBalance, setEmail} from "../../store/profileInfo";
 
 
 export const Header = () => {
-    const [visible, setVisible] = useState(false)
-    const dispatch = useDispatch()
+    const [visible, setVisible] = useState(false);
+    const dispatch = useDispatch();
+    const token = useSelector((state: RootState) => state.profileInfo.token);
+
+    useEffect(() => {
+        if (!token) {
+            dispatch(getToken());
+        }
+    }, []);
+
     const singInButtonHandler = () => {
         setVisible(true);
-        dispatch(goToAuthBase())
-    }
+        dispatch(goToAuthBase());
+    };
     const profileInfo = {
         balance: useSelector((state: RootState) => state.profileInfo.balance),
-        email: useSelector((state: RootState) => state.profileInfo.email)
-    }
+        email: useSelector((state: RootState) => state.profileInfo.email),
+    };
 
-    const token = localStorage.getItem('token')
     const {data} = useGetProfileQuery(null, {
-        skip: !token
-    })
+        skip: !token,
+    });
 
     useEffect(() => {
         if (data) {
-            setVisible(false)
+            setVisible(false);
         }
-    }, [])
+    }, []);
 
     function setProfileInfo(balance: number | undefined, email: string | undefined) {
-        dispatch(setBalance(balance))
-        dispatch(setEmail(email))
+        dispatch(setBalance(balance));
+        dispatch(setEmail(email));
     }
 
     useEffect(() => setProfileInfo(data?.balance, data?.email), [data])

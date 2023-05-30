@@ -6,7 +6,7 @@ import {useDispatch} from "react-redux";
 import {Field, Formik} from "formik";
 import {AuthenticationRequest} from "../../../../../models/generated";
 import {useAuthorizationMutation, useLazyGetProfileQuery} from "../../../../../store/auth";
-import {setBalance, setEmail} from "../../../../../store/profileInfo";
+import {setBalance, setEmail, setToken} from "../../../../../store/profileInfo";
 import * as yup from 'yup'
 
 const validationSchema = yup.object({
@@ -25,34 +25,36 @@ export const AuthBaseModal = () => {
         dispatch(setEmail(email))
     }
 
-    // const handleLogin = (formData: AuthenticationRequest) => {
-    //     login(formData)
-    //         .then(res => {
-    //             if ('data' in res) {
-    //                 console.log(data)
-    //                 let token = data?.token as string
-    //                 localStorage.setItem('token', token)
-    //             }
-    //         })
-    //         .then(() => getProfile(null).then(prom => setProfileInfo(prom?.data?.balance, prom?.data?.email))
-    //
-    //         );
-    // };
-
-    useEffect(() => {
-        if (isSuccess) {
-            localStorage.setItem('token', data?.token as string)
-            getProfile(null)
-                .then(promise => promise.data)
-                .then(body => setProfileInfo(body?.balance, body?.email))
-
-        }
-    }, [isSuccess])
-
-
     const handleLogin = (formData: AuthenticationRequest) => {
-        login(formData);
+        login(formData)
+            .then(res => {
+
+                if ('data' in res) {
+                    let token = res?.data?.token as string
+
+                    dispatch(setToken(token));
+                    return res;
+                }
+            })
+            .then(() => getProfile(null).then(prom => setProfileInfo(prom?.data?.balance, prom?.data?.email))
+
+            );
     };
+    // оставлю на всякий случай :)
+    // useEffect(() => {
+    //     if (isSuccess) {
+    //         localStorage.setItem('token', data?.token as string)
+    //         getProfile(null)
+    //             .then(promise => promise.data)
+    //             .then(body => setProfileInfo(body?.balance, body?.email))
+    //
+    //     }
+    // }, [isSuccess])
+    //
+    //
+    // const handleLogin = (formData: AuthenticationRequest) => {
+    //     login(formData);
+    // };
 
     return (
         <div className={styles.modal}>
